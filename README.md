@@ -3,4 +3,5 @@
 ### Setup:
 1. clone the repo.
 2. setup a virtual environment for the repo in python 3.6 `virtualenv --python=python3.6 parkourBackend` (do this one directory level up from the repo).
-3. begin coding and commit for auto deployment.
+3. begin coding and commit for auto deployment to AWS.
+4. access the API server from: [link](https://api.parkour.ultra-horizon.com "https://api.parkour.ultra-horizon.com")
