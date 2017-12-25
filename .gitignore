@@ -9,3 +9,10 @@ include/
 \.Python
 
 pip-selfcheck\.json
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+endpoints/__pycache__/
