@@ -16,3 +16,5 @@ pip-selfcheck\.json
 !.elasticbeanstalk/*.global.yml
 
 endpoints/__pycache__/
+
+*.pyc
