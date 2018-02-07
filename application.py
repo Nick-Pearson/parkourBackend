@@ -10,6 +10,11 @@ application = Flask(__name__)
 def servers():
     return GET_servers()
 
+# Used to calculate if an instance is responding to requests.
+@application.route("/health", methods=['GET'])
+def health():
+    return ('', 204)
+
 # Flask 404 HTML to JSON handler
 @application.errorhandler(404)
 def flaskNotFoundError(e):
