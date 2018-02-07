@@ -3,10 +3,15 @@ from flask import Flask, jsonify
 from endpoints.servers import GET_servers
 from endpoints.score import POST_score
 from classes.errors import JWException
+from classes.dbTables import parkourDB
 
 # EB looks for an 'application' callable by default.
 application = Flask(__name__)
 
+# Ensures the databases are connected prior to executing a request.
+@application.before_request
+def _db_connect():
+    parkourDB.connect()
 
 @application.route("/servers", methods=['GET'])
 def servers():
@@ -57,6 +62,11 @@ def catchAll(e):
     response.status_code = 500
     return response
 # ----------------------------------------------------------------------------------------------------------------------
+
+@application.teardown_request
+def _db_close(exc):
+    if not parkourDB.is_closed():
+        parkourDB.close()
 
 # run the app.
 if __name__ == "__main__":
