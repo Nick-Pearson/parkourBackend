@@ -1,7 +1,7 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 from endpoints.servers import GET_servers
-from endpoints.score import POST_score
+from endpoints.score import POST_score, GET_score
 from classes.errors import JWException
 from classes.dbTables import parkourDB
 
@@ -17,9 +17,12 @@ def _db_connect():
 def servers():
     return GET_servers()
 
-@application.route("/score", methods=['POST'])
+@application.route("/score", methods=['GET','POST'])
 def score():
-    return POST_score()
+    if request.method == 'GET':
+        return GET_score()
+    else:
+        return POST_score()
 
 # Used to calculate if an instance is responding to requests.
 @application.route("/health", methods=['GET'])

@@ -11,9 +11,12 @@ class ParkourModel(Model):
     class Meta:
         database = parkourDB
 
-class PlayerTable(ParkourModel):
+class LeaderboardTable(ParkourModel):
     id = IntegerField(primary_key=True)
     name = CharField()
     score = IntegerField()
+    minigameId = IntegerField()
+    sessionId = IntegerField()
+    gameStartTime = DateTimeField()
     class Meta:
-        db_table = "player"
+        db_table = "leaderboard"
