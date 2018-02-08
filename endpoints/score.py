@@ -7,7 +7,7 @@ from classes.JSONStatus import Status
 def POST_score():
     body = request.get_json()
     try:
-        verify(body["PSK"])
+        verify(request.headers.get("Authorization"))
         # DO DB Interaction here...
     except KeyError:
         raise BadRequest("Malformed JSON in POST body")
