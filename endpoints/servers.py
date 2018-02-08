@@ -5,7 +5,7 @@ def GET_servers():
         [
             {
                 "name": "Main Server",
-                "IP": "35.176.231.55"
+                "IP": "parkour.ultra-horizon.com"
             },
             {
                 "name": "Local Server",
