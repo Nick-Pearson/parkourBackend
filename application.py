@@ -57,13 +57,13 @@ def UHExceptionHandler(e):
     response.status_code = e.HTTPStatus
     return response
 
-# Unexpected error handler
-@application.errorhandler(Exception)
-def catchAll(e):
-    errorDict = {"error": "Internal Sever Error", "error_description": "An unexpected error has occurred"}
-    response = jsonify(errorDict)
-    response.status_code = 500
-    return response
+# # Unexpected error handler
+# @application.errorhandler(Exception)
+# def catchAll(e):
+#     errorDict = {"error": "Internal Sever Error", "error_description": "An unexpected error has occurred"}
+#     response = jsonify(errorDict)
+#     response.status_code = 500
+#     return response
 # ----------------------------------------------------------------------------------------------------------------------
 
 @application.teardown_request
