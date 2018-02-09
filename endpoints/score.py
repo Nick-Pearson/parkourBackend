@@ -38,5 +38,5 @@ def GET_score():
         raise BadRequest("Malformed query parameters in request")
     for user in users:
         userScoreArray.append([user.name, user.score])
-    userScoreArray.sort()
+    userScoreArray.sort(key= lambda userScore: userScore[1], reverse=True)
     return jsonify(userScoreArray)
