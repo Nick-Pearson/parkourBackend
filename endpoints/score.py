@@ -13,7 +13,9 @@ def POST_score():
         minigameId = jsonBody["minigameId"]
         sessionId = jsonBody["sessionId"]
     except KeyError:
-        raise BadRequest("Malformed JSON in POST body")
+        raise BadRequest("Malformed JSON in POST body.")
+    except TypeError:
+        raise BadRequest("Content-Type: application/json missing in request header.")
     for userScore in userScoreArray:
         userId = userScore[0]
         score = userScore[1]
