@@ -29,6 +29,13 @@ def score():
 def health():
     return ('', 204)
 
+@application.errorhandler(400)
+def flaskNotFoundError(e):
+    errorDict = {"error": "Bad Request", "error_description": "Malformed or missing data in JSON body"}
+    response = jsonify(errorDict)
+    response.status_code = 400
+    return response
+
 # Flask 404 HTML to JSON handler
 @application.errorhandler(404)
 def flaskNotFoundError(e):
