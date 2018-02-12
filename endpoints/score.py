@@ -17,9 +17,12 @@ def POST_score():
     except TypeError:
         raise BadRequest("Content-Type: application/json missing in request header.")
     for userScore in userScoreArray:
-        userId = userScore[0]
-        score = userScore[1]
-        LeaderboardTable.create(name = userId, score = score, minigameId = minigameId, sessionId = sessionId)
+        try:
+            userId = str(userScore[0])
+            score = int(userScore[1])
+            LeaderboardTable.create(name = userId, score = score, minigameId = int(minigameId), sessionId = int(sessionId))
+        except ValueError:
+            raise BadRequest("Malformed JSON elements in POST body.")
     return jsonify({
         "status": Status.SUCCESS
     })
