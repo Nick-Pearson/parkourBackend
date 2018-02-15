@@ -33,7 +33,7 @@ body {
   position: relative;
   margin: 1% auto;
   width: 50%;
-  /* height: auto; */
+  /* height: 100vh; */
   /*background colour*/
   background: #183887;
   border-radius: 10px;
