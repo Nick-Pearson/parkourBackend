@@ -15,7 +15,7 @@ deploy:
     env: production
     bucket_name: elasticbeanstalk-eu-west-2-205648807401
     on:
-        repo: jwsi/parkourBackend
+        repo: Nick-Pearson/parkourBackend
         branch:
             - $PRODUCTION
         condition: "$TRAVIS_PYTHON_VERSION == $TARGET_PYTHON_VERSION"
