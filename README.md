@@ -2,8 +2,8 @@
 
 ### Setup:
 1. Clone the repo.
-2. Setup a virtual environment for the repo in python 3.6 with the command:
-`virtualenv --python=python3.6 parkourBackend`
+2. Setup a virtual environment for the repo in python 3.6 with the command:  
+`virtualenv --python=python3.6 parkourBackend`  
 (do this one directory level above the repo to ensure virtualenv is in root of parkourBackend).
 3. run `source bin/activate` from within the parkourBackend directory to load the virtualenv.
 4. run `pip install -r requirements.txt` to install the required dependencies.
