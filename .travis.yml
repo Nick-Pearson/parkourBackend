@@ -3,6 +3,8 @@ python:
     - 3.6
 install:
     - pip install -r requirements.txt
+script:
+    - echo "Currently no tests defined... Deploying now."
 deploy:
     provider: elasticbeanstalk
     access_key_id: AKIAJFUBQPLGQPPYXFOQ
