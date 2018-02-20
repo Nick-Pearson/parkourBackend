@@ -8,8 +8,7 @@ script:
 deploy:
     provider: elasticbeanstalk
     access_key_id: AKIAJFUBQPLGQPPYXFOQ
-    secret_access_key:
-        secure: ADD-ENCRYPTED-KEY-HERE-jwsi
+    secret_access_key: $AWS_ACCESS_KEY
     region: eu-west-2
     app: Parkour
     env: production
