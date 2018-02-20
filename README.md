@@ -9,3 +9,6 @@
 4. run `pip install -r requirements.txt` to install the required dependencies.
 3. Begin coding and commit to a feature branch. Create a pull request from the feature branch to the base branch. Once approved this will be auto-deployed to AWS.
 4. Access the API server from: [https://api.parkour.ultra-horizon.com](https://api.parkour.ultra-horizon.com)
+
+##### production:
+![alt text]https://travis-ci.com/Nick-Pearson/parkourBackend.svg?token=6Ky2A5zqCfdrPiAKZcR5&branch=master "master branch status")
