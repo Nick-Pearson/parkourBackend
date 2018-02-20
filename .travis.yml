@@ -1,0 +1,19 @@
+language: python
+python:
+    - 3.6
+install:
+    - pip install -r requirements.txt
+deploy:
+    provider: elasticbeanstalk
+    access_key_id: AKIAJFUBQPLGQPPYXFOQ
+    secret_access_key:
+        secure: ADD-ENCRYPTED-KEY-HERE-jwsi
+    region: eu-west-2
+    app: Parkour
+    env: production
+    bucket_name: elasticbeanstalk-eu-west-2-205648807401
+    on:
+        repo: jwsi/parkourBackend
+        branch:
+            - $PRODUCTION
+        condition: "$TRAVIS_PYTHON_VERSION == $TARGET_PYTHON_VERSION"
