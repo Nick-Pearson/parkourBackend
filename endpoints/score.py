@@ -46,7 +46,7 @@ def GET_score():
     players = LeaderboardTable.select()
     for player in players:
         score = player.goals * 6
-        score -= player.ownGoals * -6
+        score += player.ownGoals * -6
         score += player.gamesWon * 3
         score += player.gamesDrawn
         playerScoreArray.append([player.displayName, score])
