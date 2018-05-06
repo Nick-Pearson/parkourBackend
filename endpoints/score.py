@@ -43,7 +43,11 @@ def POST_score():
 
 def GET_score():
     playerScoreArray = []
-    players = LeaderboardTable.select()
+    playerName = request.args.get('player')
+    if playerName is not None:
+        players = LeaderboardTable.select().where(LeaderboardTable.playerName == str(playerName).lower())
+    else:
+        players = LeaderboardTable.select()
     for player in players:
         score = player.goals * 6
         score += player.ownGoals * -6
