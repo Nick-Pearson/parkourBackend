@@ -42,20 +42,13 @@ def POST_score():
     })
 
 def GET_score():
-    userScoreArray = []
-    minigameId = request.args.get("minigameId")
-    sessionId = request.args.get("sessionId")
-    users = LeaderboardTable.select()
-    try:
-        if minigameId is not None:
-            minigameId = int(minigameId)
-            users = users.where(LeaderboardTable.minigameId == minigameId)
-        if sessionId is not None:
-            sessionId = int(sessionId)
-            users = users.where(LeaderboardTable.sessionId == sessionId)
-    except (ValueError):
-        raise BadRequest("Malformed query parameters in request")
-    for user in users:
-        userScoreArray.append([user.name, user.score])
-    userScoreArray.sort(key= lambda userScore: userScore[1], reverse=True)
-    return jsonify(userScoreArray)
+    playerScoreArray = []
+    players = LeaderboardTable.select()
+    for player in players:
+        score = player.goals * 6
+        score -= player.ownGoals * -6
+        score += player.gamesWon * 3
+        score += player.gamesDrawn
+        playerScoreArray.append([player.displayName, score])
+    playerScoreArray.sort(key= lambda player: player[1], reverse=True)
+    return jsonify(playerScoreArray[:10])
