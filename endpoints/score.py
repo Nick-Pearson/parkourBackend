@@ -9,20 +9,34 @@ def POST_score():
     jsonBody = request.get_json()
     try:
         verify(request.headers.get("Authorization"))
-        userScoreArray = jsonBody["scores"]
-        minigameId = jsonBody["minigameId"]
-        sessionId = jsonBody["sessionId"]
+        playerName = str(jsonBody["playerName"])
+        goals = int(jsonBody["goals"])
+        ownGoals = int(jsonBody["ownGoals"])
+        gameOutcome = str(jsonBody["gameOutcome"])
+        if not (gameOutcome in ["W", "D", "L"]):
+            raise KeyError
     except KeyError:
         raise BadRequest("Malformed JSON in POST body.")
     except TypeError:
         raise BadRequest("Content-Type: application/json missing in request header.")
-    for userScore in userScoreArray:
-        try:
-            userId = str(userScore[0])
-            score = int(userScore[1])
-            LeaderboardTable.create(name = userId, score = score, minigameId = int(minigameId), sessionId = int(sessionId))
-        except ValueError:
-            raise BadRequest("Malformed JSON elements in POST body.")
+    except ValueError:
+        raise BadRequest("Goals or OwnGoals should be of integer type!")
+    player, created = LeaderboardTable.get_or_create(playerName=playerName.lower(),
+                                                     defaults={'goals': 0, 'ownGoals': 0,
+                                                               "gamesWon": 0, "gamesDrawn": 0, "gamesLost": 0})
+    if created:
+        player.displayName = playerName
+    print (player.goals)
+    player.goals += goals
+    player.ownGoals += ownGoals
+    if gameOutcome == "W":
+        player.gamesWon += 1
+    elif gameOutcome == "D":
+        player.gamesDrawn += 1
+    elif gameOutcome == "L":
+        player.gamesLost += 1
+    player.save()
+
     return jsonify({
         "status": Status.SUCCESS
     })
