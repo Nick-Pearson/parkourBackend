@@ -7,9 +7,4 @@
 (do this one directory level above the repo to ensure virtualenv is in root of parkourBackend).
 3. run `source bin/activate` from within the parkourBackend directory to load the virtualenv.
 4. run `pip install -r requirements.txt` to install the required dependencies.
-3. Begin coding and commit to a feature branch. Create a pull request from the feature branch to the base branch. Once approved this will be auto-deployed to AWS.
-4. Access the API server from: [https://api.parkour.ultra-horizon.com](https://api.parkour.ultra-horizon.com)
-
-### Branch status:
-##### master:
-![alt text](https://travis-ci.com/Nick-Pearson/parkourBackend.svg?token=6Ky2A5zqCfdrPiAKZcR5&branch=master "master branch status")
+3. Begin coding and commit to a feature branch. Create a pull request from the feature branch to the base branch.
